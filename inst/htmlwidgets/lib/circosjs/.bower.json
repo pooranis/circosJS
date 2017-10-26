@@ -1,0 +1,49 @@
+{
+  "name": "circosjs",
+  "description": "d3js library to draw circular graphs",
+  "main": "dist/circos.min.js",
+  "license": "GPL-2.0",
+  "ignore": [
+    "demo"
+  ],
+  "keywords": [
+    "d3",
+    "d3js",
+    "circos",
+    "chords",
+    "circle",
+    "circular",
+    "ring",
+    "plot",
+    "scatter",
+    "heatmap",
+    "histogram",
+    "layout",
+    "chart",
+    "graph"
+  ],
+  "authors": [
+    {
+      "name": "Nicolas Girault",
+      "email": "nic.girault@gmail.com"
+    }
+  ],
+  "homepage": "nicgirault.gitbooks.io/circosjs/content/",
+  "repository": {
+    "type": "git",
+    "url": "git://nicgirault/circosJS.git"
+  },
+  "dependencies": {},
+  "resolutions": {},
+  "version": "2.1.0",
+  "_release": "2.1.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "2.1.0",
+    "commit": "c3add3b01eaf0b4522bf1fb9fd5e644716d6b359"
+  },
+  "_source": "https://github.com/nicgirault/circosJS.git",
+  "_target": "^2.1.0",
+  "_originalSource": "circosjs",
+  "_direct": true
+}
