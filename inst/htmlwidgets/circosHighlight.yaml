@@ -1,0 +1,5 @@
+dependencies:
+- name: circosjs
+  version: 2.1.0
+  src: htmlwidgets/lib/circosjs
+  script: dist/circos.min.js

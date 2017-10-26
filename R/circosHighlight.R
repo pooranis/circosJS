@@ -5,25 +5,35 @@
 #' @import htmlwidgets
 #'
 #' @export
-circosJS <- function(message, width = NULL, height = NULL, elementId = NULL) {
+circoshighlight <- function(df, sectors, color, colorcat, width = NULL, height = NULL, elementId = NULL) {
 
-  # forward options using x
-  x = list(
-    message = message
-  )
+  df$colorcat <- df[,colorcat]
+  color <- as.list(color)
+  color <- lapply(color, function (x) paste0('rgb(',paste(col2rgb(x), collapse = ','),')'))
+  names(color) <- sort(unique(df$colorcat))
+
+  if(!("color" %in% colnames(sectors))) {
+    sectors$color <- rep("#ffffff00", nrow(sectors))
+  }
+  x <- list(df=df, sectors=sectors, color=color)
 
   # create widget
   htmlwidgets::createWidget(
-    name = 'circosJS',
+    name = 'circosHighlight',
     x,
     width = width,
     height = height,
     package = 'circosJS',
-    elementId = elementId
+    elementId = elementId,
+    sizingPolicy = htmlwidgets::sizingPolicy(
+      viewer.padding = 0,
+      viewer.paneHeight = 500,
+      browser.fill = FALSE
+    )
   )
 }
 
-#' Shiny bindings for circosJS
+#' Shiny bindings for circosHighlight
 #'
 #' Output and render functions for using circosJS within Shiny
 #' applications and interactive Rmd documents.
@@ -40,13 +50,13 @@ circosJS <- function(message, width = NULL, height = NULL, elementId = NULL) {
 #' @name circosJS-shiny
 #'
 #' @export
-circosJSOutput <- function(outputId, width = '100%', height = '400px'){
+circosHighlightOutput <- function(outputId, width = '100%', height = '400px'){
   htmlwidgets::shinyWidgetOutput(outputId, 'circosJS', width, height, package = 'circosJS')
 }
 
 #' @rdname circosJS-shiny
 #' @export
-renderCircosJS <- function(expr, env = parent.frame(), quoted = FALSE) {
+renderCircosHighlight <- function(expr, env = parent.frame(), quoted = FALSE) {
   if (!quoted) { expr <- substitute(expr) } # force quoted
-  htmlwidgets::shinyRenderWidget(expr, circosJSOutput, env, quoted = TRUE)
+  htmlwidgets::shinyRenderWidget(expr, circosHighlightOutput, env, quoted = TRUE)
 }
